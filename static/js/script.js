@@ -13,4 +13,62 @@ btn.addEventListener("click", ()=>{
         btn.innerHTML = "light"
     }
 })
-
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Add event listeners to your cards
+    document.querySelectorAll('.audio').forEach(card => {
+      card.addEventListener('click', function() {
+        // Call a function to update and show the modal
+        updateAndShowModal(this.id);
+      });
+    });
+  });
+  
+function updateAndShowModal(cardId) {
+    const songData = {
+        'card1': [
+          { title: 'Shape of You', duration: '3:53', album: '÷ (Deluxe)', dateAdded: '2019-12-17' },
+          // More songs...
+        ],
+        // Other cards...
+      };
+  
+    // Find the table body to update
+    const tableBody = document.querySelector('#songs-list');
+    
+    // Clear previous content
+    tableBody.innerHTML = '';
+    
+    // Check if there is data for the card
+    if(songData.hasOwnProperty(cardId)) {
+      // Add songs to the table body
+      songData[cardId].forEach((song, index) => {
+        tableBody.innerHTML += `
+          <tr>
+            <th scope="row">${index + 1}</th>
+            <td>${song.title}</td>
+            <td>${song.album}</td>
+            <td>${song.dateAdded}</td>
+            <td>${song.duration}</td>
+            <td>
+            <i class="far fa-play-circle play-icon" onclick="playSong(this)"></i>
+          </td>
+          
+          <td>
+          <i class="far fa-heart like-icon" onclick="toggleLike(this)"></i>
+        </td>
+          </tr>
+        `;
+      });
+    }
+  }
+  function toggleLike(element) {
+    element.classList.toggle('fas'); // Solid heart
+    element.classList.toggle('far'); // Regular heart
+  }
+  
+  function playSong(songUrl) {
+    var audioPlayer = document.getElementById('audioPlayer');
+    audioPlayer.src = "https://open.spotify.com/playlist/1kwr4QbMOZHqzUhsumPedx"; // Set the source of the song to play
+    audioPlayer.play(); // Start playing the song
+  }
+  

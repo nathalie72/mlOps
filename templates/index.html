@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My-spotify-Clone</title>
-    <link rel="stylesheet" href="static/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link
       rel="shortcut icon"
       href="images/icons8-spotify-48.png"
@@ -18,10 +18,8 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css" />
     <script src="static/js/script.js" defer></script>
   </head>
   <body
@@ -67,10 +65,44 @@
         </div>
       </nav>
       <div class="main">
-        <div class="audio audio1 dark">
-            <img src="static/images/img (1).png" alt="">
-            <h2>Top 50 - India</h2>
-            <p>Your daily update of the most played tracks right now - India.</p>
+        <div class="modal fade" id="songListModal" tabindex="-1" aria-labelledby="songListModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="songListModalLabel">Song List</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <table class="table table-dark table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Album</th>
+                      <th scope="col">Date d'ajout</th>
+                      <th scope="col">Durée</th>
+                    </tr>
+                  </thead>
+                  <tbody id="songs-list">
+                    <!-- Song rows will be added here by JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <audio id="audioPlayer" controls style="width: 100%;">
+                  <!-- Your source tags or JavaScript to load audio dynamically -->
+                </audio>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+        <!-- Update to one of the cards to trigger the modal -->
+        <div class="audio audio1 dark" id="card1" data-bs-toggle="modal" data-bs-target="#songListModal">
+          <img src="static/images/img (1).png" alt="">
+          <h2>Top 50 - India</h2>
+          <p>Your daily update of the most played tracks right now - India.</p>
         </div>
         <div class="audio audio1 dark">
             <img src="static/images/img (2).png" alt="">
@@ -134,5 +166,7 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
   </body>
 </html>

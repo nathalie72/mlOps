@@ -1,3 +1,30 @@
+:root {
+    --bs-table-bg: #131614 !important; /* The same background color for the table and modal */
+    --bs-table-color: #fff !important; /* White color for the text */
+  }
+  
+  .table-dark {
+    background-color: var(--bs-table-bg) !important;
+    color: var(--bs-table-color) !important;
+  }
+  
+  .table-dark thead th {
+    background-color: var(--bs-table-bg) !important;
+    color: var(--bs-table-color) !important;
+  }
+  
+  .table-dark tbody td {
+    background-color: var(--bs-table-bg) !important;
+    color: var(--bs-table-color) !important;
+  }
+  
+  /* Hover effect on table cells */
+  .table-dark tbody tr:hover td {
+    background-color: #2a2a2a !important; /* Slightly lighter shade for hover effect */
+  }
+  
+  
+  
 .collapse{
     justify-content: flex-end;
 }
@@ -45,3 +72,45 @@
 .btn{
     background-color: #4aae4f !important;
 }
+/* This will center your modal on the screen and set a maximum width */
+/* Modal content background */
+/* This will set the background color for both the modal and the table */
+.modal-content {
+    background-color: #131614; /* Dark background color */
+    color: #fff; /* White text color */
+  }
+  
+  /* Ensure the table headers and cells also have white text */
+  .table-dark thead th, .table-dark tbody td {
+    color: #fff; /* White text color */
+  }
+  
+  /* To handle the hover state with a slightly lighter shade */
+  .table-dark tr:hover {
+    background-color: #2a2a2a; /* Slightly lighter shade for hover */
+  }
+  .btn-play img, .btn-like img {
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    cursor: pointer;
+  }
+  .like-icon {
+    cursor: pointer;
+    color: white; /* Default color */
+  }
+  
+  .like-icon.fas {
+    color: red; /* Color when the icon is 'liked' */
+  }
+  
+  .play-icon {
+    cursor: pointer;
+    color:green; /* or any color you prefer */
+  }
+  
+  .modal-footer {
+    background-color: transparent; /* Make footer transparent or any color you prefer */
+    border-top: none; /* Hide the border if desired */
+  }
+
+  
