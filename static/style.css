@@ -113,4 +113,32 @@
     border-top: none; /* Hide the border if desired */
   }
 
-  
+  /* ... existing styles ... */
+
+.audio-controls i {
+  cursor: pointer;
+  margin: 0 10px;
+  /* Add more styling here */
+}
+
+.audio-progress input[type="range"] {
+  width: 100%;
+  /* Add more styling here */
+}
+
+.audio-timer {
+  display: flex;
+  justify-content: space-between;
+  /* Add more styling here */
+}
+
+.audio-volume i {
+  cursor: pointer;
+}
+
+.audio-volume input[type="range"] {
+  width: 80px; /* Adjust as necessary */
+  /* Add more styling here */
+}
+
+/* ... other styles ... */

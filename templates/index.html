@@ -89,10 +89,39 @@
                 </table>
               </div>
               <div class="modal-footer">
-                <audio id="audioPlayer" controls style="width: 100%;">
-                  <!-- Your source tags or JavaScript to load audio dynamically -->
-                </audio>
+                <div class="audio-controls">
+                  <!-- Shuffle icon -->
+                  <i class="fas fa-random shuffle-icon" onclick="toggleShuffle()"></i>
+                  
+                  <!-- Step backward icon -->
+                  <i class="fas fa-step-backward" onclick="previousSong()"></i>
+                  
+                  <!-- Play/Pause icon -->
+                  <i class="far fa-play-circle" onclick="playPauseSong()"></i>
+                  
+                  <!-- Step forward icon -->
+                  <i class="fas fa-step-forward" onclick="nextSong()"></i>
+                  
+                  <!-- Repeat icon (optional) -->
+                  <i class="fas fa-redo" onclick="toggleRepeat()"></i>
+                </div>
+                
+                <div class="audio-progress">
+                  <input type="range" id="song-progress" value="0">
+                </div>
+                
+                <div class="audio-timer">
+                  <span id="current-time">0:00</span> / <span id="duration">3:53</span>
+                </div>
+                
+                <div class="audio-volume">
+                  <i class="fas fa-volume-down" onclick="lowerVolume()"></i>
+                  <input type="range" id="volume-control" min="0" max="100">
+                  <i class="fas fa-volume-up" onclick="increaseVolume()"></i>
+                </div>
               </div>
+              
+
               
             </div>
           </div>
