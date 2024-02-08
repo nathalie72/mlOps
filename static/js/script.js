@@ -23,44 +23,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
   });
   
-function updateAndShowModal(cardId) {
-    const songData = {
-        'card1': [
-          { title: 'Shape of You', duration: '3:53', album: '÷ (Deluxe)', dateAdded: '2019-12-17' },
-          // More songs...
-        ],
-        // Other cards...
-      };
-  
+
+  function updateAndShowModal(cardId) {
     // Find the table body to update
     const tableBody = document.querySelector('#songs-list');
     
     // Clear previous content
     tableBody.innerHTML = '';
     
-    // Check if there is data for the card
-    if(songData.hasOwnProperty(cardId)) {
-      // Add songs to the table body
-      songData[cardId].forEach((song, index) => {
-        tableBody.innerHTML += `
-          <tr>
-            <th scope="row">${index + 1}</th>
-            <td>${song.title}</td>
-            <td>${song.album}</td>
-            <td>${song.dateAdded}</td>
-            <td>${song.duration}</td>
-            <td>
-            <i class="far fa-play-circle play-icon" onclick="playSong(this)"></i>
-          </td>
-          
+    // Add songs to the table body from the global `songs` array
+    songs.forEach((song, index) => {
+      tableBody.innerHTML += `
+        <tr>
+          <th scope="row">${index + 1}</th>
+          <td>${song.title}</td>
+          <td>${song.album}</td>
+          <td>${song.dateAdded}</td>
+          <td>${song.duration}</td>
           <td>
-          <i class="far fa-heart like-icon" onclick="toggleLike(this)"></i>
-        </td>
-          </tr>
-        `;
-      });
-    }
+            <i class="far fa-play-circle play-icon" onclick="playSong(${index})"></i>
+          </td>
+          <td>
+            <i class="far fa-heart like-icon" onclick="toggleLike(this)"></i>
+          </td>
+        </tr>
+      `;
+    });
   }
+  
   function toggleLike(element) {
     element.classList.toggle('fas'); // Solid heart
     element.classList.toggle('far'); // Regular heart
@@ -71,7 +61,50 @@ let isPlaying = false;
 let isRepeat = false;
 let currentSongIndex = 0;
 let volume = 50; // Assuming a volume level from 0 to 100
-let songs = []; // Assuming this is an array of your songs
+let songs = [
+  {
+    title: 'Shape of You',
+    artist: 'Ed Sheeran',
+    album: '÷ (Deluxe)',
+    duration: '3:53',
+    dateAdded: '2019-12-17',
+    url: 'songs/shape-of-you.mp3' // URL or path to the song file
+  },
+  {
+    title: 'Blinding Lights',
+    artist: 'The Weeknd',
+    album: 'After Hours',
+    duration: '3:20',
+    dateAdded: '2020-03-20',
+    url: 'songs/blinding-lights.mp3'
+  },
+  {
+    title: 'Rockstar',
+    artist: 'Post Malone',
+    album: 'Beerbongs & Bentleys',
+    duration: '3:38',
+    dateAdded: '2018-04-27',
+    url: 'songs/rockstar.mp3'
+  },
+  {
+    title: 'Someone You Loved',
+    artist: 'Lewis Capaldi',
+    album: 'Divinely Uninspired to a Hellish Extent',
+    duration: '3:02',
+    dateAdded: '2019-05-17',
+    url: 'songs/someone-you-loved.mp3'
+  },
+  {
+    title: 'Sunflower',
+    artist: 'Post Malone',
+    album: 'Spider-Man: Into the Spider-Verse',
+    duration: '2:38',
+    dateAdded: '2018-10-18',
+    url: 'songs/sunflower.mp3'
+  }
+  // ... more songs as needed
+];
+
 
 // Utility function to shuffle an array (Fisher-Yates Shuffle)
 function shuffleArray(array) {
@@ -151,10 +184,16 @@ function updateVolume() {
   // Additional code to update the audio element's volume
 }
 
-// Placeholder for playSong function
 function playSong(index) {
-  currentSongIndex = index;
-  // Code to set the audio source and play it
-  // Update UI accordingly
+  const song = songs[index];
+  const audioPlayer = document.getElementById('audioPlayer'); // Make sure this ID matches your audio tag
+  audioPlayer.src = song.url; // Set the song URL
+  audioPlayer.play(); // Play the song
+  isPlaying = true; // Update the isPlaying state
+  // Update the play/pause button to show the pause icon
+  const playPauseIcon = document.querySelector('.fa-play-circle');
+  playPauseIcon.classList.remove('fa-play-circle');
+  playPauseIcon.classList.add('fa-pause-circle');
 }
+
   
