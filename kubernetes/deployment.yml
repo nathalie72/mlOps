@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flask-web-app
+  name: flask-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-web-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: flask-web-app
+    spec:
+      containers:
+      - image: flask-web-app:latest
+        name: flask-web-app
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
